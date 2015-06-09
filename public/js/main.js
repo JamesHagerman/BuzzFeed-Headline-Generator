@@ -10,7 +10,7 @@ function fbs_click()
 var updateHeadline = function() {
 	// AJAX Request: get index (http://192.168.124.28:5000/headline.json)
 	$.ajax({
-		url: "http://localhost:5000/headline.json",
+		url: "http://"+window.location.href+":5000/headline.json",
 		type: "GET",
 		// crossDomain: true,
 		// dataType: "jsonp",
