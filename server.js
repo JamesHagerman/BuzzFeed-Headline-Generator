@@ -345,6 +345,12 @@ var headline = function() {
 //   res.send(index_page);
 // });
 
+
+// OpenShift nonesense:
+var server_port = process.env.OPENSHIFT_NODEJS_PORT || 5000 // 8888 was my original port
+var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0' // 0.0.0.0 was my original ip. 127.0.0.1 also should work
+
+
 app.use(express.static(__dirname + '/public'));
 
 app.get('/headline.json', function(req, res){
@@ -352,7 +358,7 @@ app.get('/headline.json', function(req, res){
   res.send(headline());
 });
 
-var server = app.listen(5000, function() {
+var server = app.listen(server_port, server_ip_address, function() {
     console.log('Listening on port %d', server.address().port);
 });
 
